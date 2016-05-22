@@ -1,0 +1,83 @@
+#side_area {
+	float: left;
+	margin: 0;
+	padding: 5px 3px 0 0;
+	width: 200px;
+	text-align: left;
+	line-height: 180%;
+	letter-spacing: 1px;
+	background-color: #ffffff;
+}
+
+#side_area h2 {
+	margin: 0 0 1px 0;
+	padding: 10px 0 7px 14px;
+	line-height: 110%;
+	font-size: 12px;
+	color: #fffffc;
+	background-image: url(/okozukai/img/sidebar.gif);
+	background-repeat: no-repeat;
+}
+
+#side_area a {
+	color: #004080;
+	font-size: 12px;
+	line-height: 190%;
+}
+
+#side_area a:hover {
+	color: #005ebb;
+	font-size: 12px;
+	line-height: 190%;
+}
+
+#side_area p {
+	margin: 10px 4px 24px 4px;
+	line-height: 180%;
+}
+
+#side_area ul {
+	margin: 0 0 18px 0;
+	padding: 0;
+	list-style: none;
+}
+
+#side_area li {
+	margin: 0;
+	padding: 8px 12px 6px 14px;
+	line-height: 150%;
+	list-style: none;
+	border-top: solid 1px #cccccc;
+	border-right: solid 1px #cccccc;
+	border-bottom: solid 1px #cccccc;
+	border-left: solid 1px #cccccc;
+	background-color: #f3f3f3;
+}
+
+#side_area li a {
+	color: #004080;
+	font-size: 12px;
+	line-height: 190%;
+	text-decoration: none;
+}
+
+#side_area li a:hover {
+	color: #005ebb;
+	font-size: 12px;
+	line-height: 190%;
+	text-decoration: underline;
+}
+
+#side_area table tr td {
+	font-size: 12px;
+}
+
+.message_area {
+	font-size: 12px;
+	color: red;
+	font-weight: bold;
+}
+
+.user_info {
+	font-weight: bold;
+}

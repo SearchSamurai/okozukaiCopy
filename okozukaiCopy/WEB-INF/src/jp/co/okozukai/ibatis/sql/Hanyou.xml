@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Hanyou">
+	<!-- 汎用マスタからレコードを取得 -->
+	<select id="findHanyou" resultClass="jp.co.okozukai.ibatis.dto.Hanyou">
+		SELECT
+			A.sort_no AS sortNo,
+			A.disp_name AS dispName,
+			A.value AS value,
+			A.hanyou_kbn AS hanyouKbn,
+			DATE_FORMAT(A.inst_date, '%Y%m%d%H%i%s') AS instDate,
+			A.inst_id AS instId,
+			DATE_FORMAT(A.update_date, '%Y%m%d%H%i%s') AS updateDate,
+			A.update_id AS updateId
+		FROM
+			HANYOU A
+		ORDER BY A.sort_no
+	</select>
+</sqlMap>

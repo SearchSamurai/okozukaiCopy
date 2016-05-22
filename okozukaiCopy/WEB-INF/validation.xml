@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+	<formset>
+		<form name="LoginActionForm">
+			<field property="userId" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="ユーザID" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="userPassword" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="パスワード" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="UserRegistActionForm">
+			<field property="userId" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="ユーザID" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="userPassword" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="パスワード" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="UserUpdateActionForm">
+			<field property="userId" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="ユーザID" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="userPassword" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.haneisuu" />
+				<arg position="0" key="パスワード" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]+$</var-value>
+				</var>
+			</field>
+		</form>
+		<form name="OkoRegistActionForm">
+			<field property="year" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.keta" />
+				<msg name="mask" key="errors.hansuu" />
+				<arg position="0" key="日付(年)" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>4</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="month" depends="required, maxlength, mask, intRange">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.keta" />
+				<msg name="mask" key="errors.hansuu" />
+				<msg name="intRange" key="errors.intrange" />
+				<arg position="0" key="日付(月)" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<arg position="2" key="${var:min}" resource="false" />
+				<arg position="3" key="${var:max}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>2</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]+$</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>12</var-value>
+				</var>
+			</field>
+			<field property="day" depends="required, maxlength, mask, intRange">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.keta" />
+				<msg name="mask" key="errors.hansuu" />
+				<msg name="intRange" key="errors.intrange" />
+				<arg position="0" key="日付(日)" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<arg position="2" key="${var:min}" resource="false" />
+				<arg position="3" key="${var:max}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>2</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]+$</var-value>
+				</var>
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>31</var-value>
+				</var>
+			</field>
+			<field property="hinmokuCode" depends="required, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="mask" key="errors.faild" />
+				<arg position="0" key="収支品目" resource="false" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20)+$</var-value>
+				</var>
+			</field>
+			<field property="inMoney" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.hansuu" />
+				<arg position="0" key="収入金額" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>9</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="outMoney" depends="required, maxlength, mask">
+				<msg name="required" key="errors.required" />
+				<msg name="maxlength" key="errors.maxlength" />
+				<msg name="mask" key="errors.hansuu" />
+				<arg position="0" key="支出金額" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>9</var-value>
+				</var>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[0-9]+$</var-value>
+				</var>
+			</field>
+			<field property="memo" depends="maxlength">
+				<msg name="maxlength" key="errors.maxlength" />
+				<arg position="0" key="メモ" resource="false" />
+				<arg position="1" key="${var:maxlength}" resource="false" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>20</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+</form-validation>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+	<!-- ユーザ管理テーブルからユーザIDに紐ついたレコードを取得 -->
+	<select id="findUser" resultClass="jp.co.okozukai.ibatis.dto.User">
+		SELECT
+			A.user_id AS userId,
+			A.user_password AS userPassword,
+			DATE_FORMAT(A.inst_date, '%Y%m%d%H%i%s') AS instDate,
+			A.inst_id AS instId,
+			DATE_FORMAT(A.update_date, '%Y%m%d%H%i%s') AS updateDate,
+			A.update_id AS updateId
+		FROM
+			USER A
+		WHERE
+			A.user_id = #userId#
+	</select>
+
+	<!-- ユーザ管理テーブルにユーザを登録 -->
+	<insert id="addUser">
+		INSERT INTO USER (
+			user_id,
+			user_password,
+			inst_date,
+			inst_id,
+			update_date,
+			update_id
+		) VALUES (
+			#userId#,
+			#userPassword#,
+			sysdate(),
+			#className#,
+			sysdate(),
+			#className#
+		)
+	</insert>
+
+	<!-- ユーザ管理テーブルのユーザを更新 -->
+	<update id="updateUser">
+		UPDATE USER SET
+			user_id = #userId#,
+			user_password = #userPassword#,
+			update_date = sysdate(),
+			update_id = #className#
+		WHERE
+			user_id = #updUserId#
+	</update>
+</sqlMap>

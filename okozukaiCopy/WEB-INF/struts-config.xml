@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+<!-- ================================================ Form Bean Definitions -->
+	<!--beanにはデータを格納するActionFormクラスを設定します-->
+	<!--nameは略称、typeはpathを含むファイル名です-->
+	<form-beans>
+		<form-bean name="LoginActionForm" type="jp.co.okozukai.form.LoginActionForm" />
+		<form-bean name="LogoutActionForm" type="jp.co.okozukai.form.LogoutActionForm" />
+		<form-bean name="UserRegistActionForm" type="jp.co.okozukai.form.UserRegistActionForm" />
+		<form-bean name="UserUpdateActionForm" type="jp.co.okozukai.form.UserUpdateActionForm" />
+		<form-bean name="OkoRegistActionForm" type="jp.co.okozukai.form.OkoRegistActionForm" />
+		<form-bean name="OkoSearchActionForm" type="jp.co.okozukai.form.OkoSearchActionForm" />
+		<form-bean name="OkoUpdateActionForm" type="jp.co.okozukai.form.OkoUpdateActionForm" />
+	</form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+    <!--actionは実際に処理を行うActionクラスを設定します-->
+    <!--pathはjspで指定するときの略称です-->
+    <!--nameは使用するbean(ActionForm)の略称を入れます-->
+    <!--typeはpathを含むファイル名です-->
+    <!--scopeはデータ転送形式です-->
+    <!--inputは実行されるjspです-->
+	<action-mappings>
+		<action path="/LoginAction" forward="/pages/top.jsp" type="jp.co.okozukai.action.LoginAction" name="LoginActionForm" scope="request" validate="true" input="/pages/top.jsp">
+			<forward name="success" path="/pages/top.jsp" />
+			<forward name="input" path="/pages/top.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/LogoutAction" forward="/pages/top.jsp" type="jp.co.okozukai.action.LogoutAction" name="LogoutActionForm" scope="request" validate="true" input="/pages/top.jsp">
+			<forward name="success" path="/pages/top.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/UserRegistAction" forward="/pages/userRegistComplete.jsp" type="jp.co.okozukai.action.UserRegistAction" name="UserRegistActionForm" scope="request" validate="true" input="/pages/userRegist.jsp">
+			<forward name="success" path="/pages/userRegistComplete.jsp" />
+			<forward name="input" path="/pages/userRegist.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/UserUpdateAction" forward="/pages/userUpdateComplete.jsp" type="jp.co.okozukai.action.UserUpdateAction" name="UserUpdateActionForm" scope="request" validate="true" input="/pages/userUpdate.jsp">
+			<forward name="success" path="/pages/userUpdateComplete.jsp" />
+			<forward name="input" path="/pages/userUpdate.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/OkoRegistAction" forward="/pages/okoRegist.jsp" type="jp.co.okozukai.action.OkoRegistAction" name="OkoRegistActionForm" scope="request" validate="true" input="/pages/okoRegist.jsp">
+			<forward name="success" path="/pages/okoRegist.jsp" />
+			<forward name="input" path="/pages/okoRegist.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/OkoSearchAction" forward="/pages/okoSearch.jsp" type="jp.co.okozukai.action.OkoSearchAction" name="OkoSearchActionForm" scope="request" input="/pages/okoSearch.jsp">
+			<forward name="success" path="/pages/okoSearch.jsp" />
+			<forward name="input" path="/pages/okoSearch.jsp" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+		<action path="/OkoUpdateAction" forward="/pages/okoSearch.jsp" type="jp.co.okozukai.action.OkoUpdateAction" name="OkoUpdateActionForm" scope="request" input="/pages/okoSearch.jsp">
+			<forward name="success" path="/OkoSearchAction.do" />
+			<forward name="input" path="/OkoSearchAction.do" />
+			<forward name="error" path="/error.jsp" />
+		</action>
+	</action-mappings>
+
+<!-- ======================================== Message Resources Definitions -->
+    <!--プロパティファイルのある場所を指定します-->
+    <!--parameterはpathを含むファイル名を入れます-->
+	<message-resources parameter="application" />
+
+<!-- =================================================== Validator plugin -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml, /WEB-INF/validation.xml" />
+	</plug-in>
+</struts-config>

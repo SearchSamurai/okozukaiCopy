@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Okozukai">
+	<!-- おこずかいテーブルにレコードを登録 -->
+	<insert id="addOkozukai">
+		INSERT INTO OKOZUKAI (
+			shori_no,
+			user_id,
+			year,
+			month,
+			day,
+			hinmoku_code,
+			in_money,
+			out_money,
+			memo,
+			inst_date,
+			inst_id,
+			update_date,
+			update_id
+		) VALUES (
+			#shoriNo#,
+			#userId#,
+			LPAD(#form.year#, 4, '0'),
+			LPAD(#form.month#, 2, '0'),
+			LPAD(#form.day#, 2, '0'),
+			#form.hinmokuCode#,
+			<isNotEmpty property="form.inMoney">
+				#form.inMoney#,
+			</isNotEmpty>
+			<isEmpty property="form.inMoney">
+				NULL,
+			</isEmpty>
+			<isNotEmpty property="form.outMoney">
+				#form.outMoney#,
+			</isNotEmpty>
+			<isEmpty property="form.outMoney">
+				NULL,
+			</isEmpty>
+			<isNotEmpty property="form.memo">
+				#form.memo#,
+			</isNotEmpty>
+			<isEmpty property="form.memo">
+				NULL,
+			</isEmpty>
+			sysdate(),
+			#className#,
+			sysdate(),
+			#className#
+		)
+	</insert>
+
+	<!-- ユーザ毎の最大処理Noを取得 -->
+	<select id="findMaxShoriNo" resultClass="java.lang.String">
+		SELECT
+			MAX(A.shori_no)
+		FROM
+			OKOZUKAI A
+		WHERE
+			A.user_id = #userId#
+	</select>
+
+	<!-- 登録レコードを取得 -->
+	<select id="findOkozukai" resultClass="jp.co.okozukai.ibatis.dto.Okozukai">
+		SELECT
+			A.shori_no AS shoriNo,
+			A.user_id AS userId,
+			A.year AS year,
+			A.month AS month,
+			A.day AS day,
+			A.hinmoku_code AS hinmokuCode,
+			A.in_money AS inMoney,
+			A.out_money AS outMoney,
+			A.memo AS memo,
+			DATE_FORMAT(A.inst_date, '%Y%m%d%H%i%s') AS instDate,
+			A.inst_id AS instId,
+			DATE_FORMAT(A.update_date, '%Y%m%d%H%i%s') AS updateDate,
+			A.update_id AS updateId
+		FROM
+			OKOZUKAI A
+		WHERE
+			A.user_id = #userId#
+			<isNotEmpty property="form.year" prepend="AND">
+				A.year = LPAD(#form.year#, 4, '0')
+			</isNotEmpty>
+			<isNotEmpty property="form.month" prepend="AND">
+				A.month = LPAD(#form.month#, 2, '0')
+			</isNotEmpty>
+			<isNotEmpty property="form.day" prepend="AND">
+				A.day = LPAD(#form.day#, 2, '0')
+			</isNotEmpty>
+			<isNotEmpty property="form.hinmokuCode" prepend="AND">
+				A.hinmoku_code = #form.hinmokuCode#
+			</isNotEmpty>
+			<isNotEmpty property="form.inMoneyFrom" prepend="AND">
+				<![CDATA[
+					A.in_money >= #form.inMoneyFrom#
+				 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="form.inMoneyTo" prepend="AND">
+				<![CDATA[
+					A.in_money <= #form.inMoneyTo#
+				]]>
+			</isNotEmpty>
+			<isNotEmpty property="form.outMoneyFrom" prepend="AND">
+				<![CDATA[
+					A.out_money >= #form.outMoneyFrom#
+				 ]]>
+			</isNotEmpty>
+			<isNotEmpty property="form.outMoneyTo" prepend="AND">
+				<![CDATA[
+					A.out_money <= #form.outMoneyT#
+				]]>
+			</isNotEmpty>
+		ORDER BY A.shori_no
+	</select>
+
+	<!-- おこずかいテーブルのレコードを更新 -->
+	<update id="updateOkozukai">
+		UPDATE OKOZUKAI SET
+			year = LPAD(#dto.year#, 4, '0'),
+			month = LPAD(#dto.month#, 2, '0'),
+			day = LPAD(#dto.day#, 2, '0'),
+			hinmoku_code = #dto.hinmokuCode#,
+			in_money = #dto.inMoney#,
+			out_money = #dto.outMoney#,
+			memo = #dto.memo#,
+			update_date = sysdate(),
+			update_id = #className#
+		WHERE
+			shori_no = #dto.shoriNo#
+		AND
+			user_id = #userId#
+	</update>
+
+	<!-- おこずかいテーブルのレコードを削除 -->
+	<delete id="deleteOkozukai">
+		DELETE FROM OKOZUKAI
+		WHERE
+			shori_no = #dto.shoriNo#
+		AND
+			user_id = #userId#
+	</delete>
+</sqlMap>

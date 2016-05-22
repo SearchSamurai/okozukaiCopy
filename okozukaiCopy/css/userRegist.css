@@ -1,0 +1,106 @@
+body {
+	font-family: "ÉqÉâÉMÉmäpÉS Pro W3", "Hiragino Kaku Gothic Pro", "MS P ÉSÉVÉbÉN", "MS P Gothic", sans-Serif;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #333;
+	background-color: #ffffff;
+}
+
+* {
+	font-style: normal;
+	margin: 0px;
+	padding: 0px;
+}
+
+a:link {
+	color: #004080;
+	font-size: 12px;
+}
+
+a:hover {
+	color: #005ebb;
+	font-size: 12px;
+}
+
+a:visited {
+	color: #004080;
+	font-size: 12px;
+}
+
+p {
+	margin: 20px 0 20px 0;
+	line-height: 150%;
+	letter-spacing: 1px;
+}
+
+h1 {
+	font-size: 12px;
+	margin: 0;
+	padding: 2px 3px 0px 3px;
+	color: #333;
+}
+
+/*------- Åü wrapper ïîï™ Åü -------*/
+#wrapper {
+	margin: 0 auto 0 auto;
+	padding: 0;
+	width: 850px;
+	background-color: #ffffff;
+}
+
+/*------- Åü contents Åü -------*/
+#container {
+	margin: 0px;
+	padding: 7px 0 5px 0;
+	width: 850px;
+	background-color: #ffffff;
+}
+
+/*------- Åü main contents Åü -------*/
+#contents {
+	float: right;
+	margin:	5px 0 0 0;
+	padding: 0 0 0 6px;
+	line-height: 150%;
+	letter-spacing: 1px;
+	width: 850px;
+}
+
+#contents img.sample {
+	float: left;
+	margin: 20px;
+}
+
+#contents h2 {
+	margin: 0;
+	padding: 11px 0 12px 25px;
+	line-height: 110%;
+	font-size: 14px;
+	color: #555555;
+	background-image: url(/okozukai/img/titlebar.gif);
+	background-repeat: no-repeat;
+	width: 825px;
+}
+
+#contents p {
+	margin: 18px 0 18px 0;
+	padding: 0;
+	line-height: 160%;
+	letter-spacing: 1px;
+}
+
+#contents table {
+	font-size: 12px;
+}
+
+.input_userinfo {
+	margin-left: 40px;
+}
+
+.message_area {
+	font-size: 12px;
+	color: red;
+	font-weight: bold;
+	margin-left: 40px;
+}

@@ -1,0 +1,9 @@
+#header {
+	margin: 0;
+	padding: 0;
+	width: 850px;
+	height: 220px;
+	font-family:Verdana;
+	background-image: url(/okozukai/img/main_photo.jpg);
+	background-repeat: no-repeat;
+}
